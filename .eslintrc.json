@@ -6,6 +6,7 @@
   "extends": [
     "plugin:react/recommended",
     "plugin:prettier/recommended",
+    "plugin:react-redux/recommended",
     "react-app",
     "airbnb",
     "airbnb/hooks",
@@ -23,15 +24,18 @@
     },
     "ecmaVersion": 2018
   },
-  "plugins": ["react", "prettier"],
+  "plugins": ["react", "prettier", "react-redux"],
   "rules": {
     "jsx-quotes": ["error", "prefer-double"],
-    "linebreak-style": ["error", "windows"],
-
+    "linebreak-style": "off",
+    "prefer-object-spread": "off",
+    "react-redux/prefer-separate-component-file": "off",
     "prettier/prettier": [
       "error",
       {
-        "singleQuote": true
+        "singleQuote": true,
+        "trailingComma": "all",
+        "endOfLine": "auto"
       },
       {
         "usePrettierrc": false

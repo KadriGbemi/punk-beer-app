@@ -1,0 +1,21 @@
+.beer-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  .beer-list__item {
+    display: flex;
+    padding: 5;
+    flex-direction: column;
+    justify-content: space-between;
+    .beer-list__item_details {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .beer-list__item__img {
+      color: white;
+    }
+  }
+}
