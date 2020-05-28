@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "342507a76b491fa35a9024d5c9658063",
+    "revision": "3b5afda61fed7246756c7717993d6c0e",
     "url": "/punk-beer-app/index.html"
   },
   {
-    "revision": "daa7900b8e412ed97de1",
-    "url": "/punk-beer-app/static/css/main.ac4103fc.chunk.css"
+    "revision": "06afb3a494d586dac4e7",
+    "url": "/punk-beer-app/static/css/main.6ff82216.chunk.css"
   },
   {
     "revision": "af1538222022d91402c0",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/punk-beer-app/static/js/2.d6ab237b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "daa7900b8e412ed97de1",
-    "url": "/punk-beer-app/static/js/main.c3853d40.chunk.js"
+    "revision": "06afb3a494d586dac4e7",
+    "url": "/punk-beer-app/static/js/main.2e2fe31e.chunk.js"
   },
   {
     "revision": "917a65a2a0ac4cfa2b30",
