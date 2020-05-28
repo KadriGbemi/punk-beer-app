@@ -7,7 +7,7 @@ import './detail.scss';
 
 function DetailsPage() {
   return (
-    <div className="beer-detail">
+    <div className="beer-detail-page">
       <div>
         <LeftDetailSection />
       </div>

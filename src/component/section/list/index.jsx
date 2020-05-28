@@ -41,7 +41,7 @@ function BeersList({ beers, beerDetails, isNextPage, dispatch, pageNumber }) {
             left: 0,
             behavior: 'smooth',
           });
-        }, 4000);
+        }, 3000);
         setPageNumber(pageNumber);
         return () =>
           clearTimeout(
@@ -71,7 +71,7 @@ function BeersList({ beers, beerDetails, isNextPage, dispatch, pageNumber }) {
         }) ||
         window.scrollTo(beerDetails.position.left, beerDetails.position.top)
       );
-      // // window.scroll for Internet Explorer and Safari browsers
+      // window.scroll for Internet Explorer and Safari browsers
     }
     return undefined;
   });
