@@ -9,6 +9,7 @@
     display: flex;
     max-width: 80%;
     margin: auto;
+    display: flex;
   }
 }
 
@@ -23,4 +24,14 @@
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
+}
+
+@media screen and (max-width: 524px) {
+  .main__body {
+    max-width: 80%;
+    margin: auto;
+    left: 30%;
+    top: 10%;
+    position: absolute;
+  }
 }

@@ -1,6 +1,13 @@
 .beer-detail-page {
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   width: 80%;
   padding: 5%;
+}
+
+@media screen and (max-width: 524px) {
+  .beer-detail-page {
+    flex-wrap: wrap;
+    padding: 10%;
+  }
 }
