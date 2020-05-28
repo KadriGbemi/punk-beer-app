@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/punk-beer-app/static/css/main.ac4103fc.chunk.css",
+    "main.js": "/punk-beer-app/static/js/main.c3853d40.chunk.js",
+    "main.js.map": "/punk-beer-app/static/js/main.c3853d40.chunk.js.map",
+    "runtime-main.js": "/punk-beer-app/static/js/runtime-main.20e4d85e.js",
+    "runtime-main.js.map": "/punk-beer-app/static/js/runtime-main.20e4d85e.js.map",
+    "static/js/2.d6ab237b.chunk.js": "/punk-beer-app/static/js/2.d6ab237b.chunk.js",
+    "static/js/2.d6ab237b.chunk.js.map": "/punk-beer-app/static/js/2.d6ab237b.chunk.js.map",
+    "index.html": "/punk-beer-app/index.html",
+    "precache-manifest.c688969bae9d0fc5b453ca3ff6b6a285.js": "/punk-beer-app/precache-manifest.c688969bae9d0fc5b453ca3ff6b6a285.js",
+    "service-worker.js": "/punk-beer-app/service-worker.js",
+    "static/css/main.ac4103fc.chunk.css.map": "/punk-beer-app/static/css/main.ac4103fc.chunk.css.map",
+    "static/js/2.d6ab237b.chunk.js.LICENSE.txt": "/punk-beer-app/static/js/2.d6ab237b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.20e4d85e.js",
+    "static/js/2.d6ab237b.chunk.js",
+    "static/css/main.ac4103fc.chunk.css",
+    "static/js/main.c3853d40.chunk.js"
+  ]
+}
