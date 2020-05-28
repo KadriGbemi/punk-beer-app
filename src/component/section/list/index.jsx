@@ -1,30 +1,82 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getBeers } from '../../../redux/_actions';
+import { getBeers, setPage } from '../../../redux/_actions';
 import Beer from './Beer';
 
 import './list.scss';
 
-function BeersList({ beers, beerDetails, dispatch }) {
+function usePrevious(value) {
+  const ref = useRef();
   useEffect(() => {
-    if (beers.length < 1) {
-      dispatch(getBeers());
-    }
-    if (beerDetails && beerDetails.position) {
-      // window.scroll for other browser
-      window.scroll({
-        top: beerDetails.position.top,
-        left: beerDetails.position.left,
-        behavior: 'smooth',
-      });
-      // // window.scroll for Internet Explorer and Safari browsers
-      // window.scroll(beerDetails.position.left, beerDetails.position.top);
-    }
+    ref.current = value;
   });
+  return ref.current;
+}
+function BeersList({ beers, beerDetails, isNextPage, dispatch, pageNumber }) {
+  const [page, setPageNumber] = useState(pageNumber);
 
+  const prevPage = usePrevious(page);
+
+  function handlePageDisplay() {
+    if (prevPage === page || beers.length < 1) {
+      dispatch(getBeers(pageNumber));
+    }
+  }
+  function handleScroll() {
+    const windowHeight =
+      'innerHeight' in window
+        ? window.innerHeight
+        : document.documentElement
+            .offsetHeight; /* Support the use of older browsers */
+    const beerListElement = document.getElementById('beer-list');
+    const bottomPosition = beerListElement.getBoundingClientRect().bottom;
+    if (Math.round(bottomPosition) <= windowHeight + windowHeight / 2) {
+      dispatch(setPage(pageNumber + 1));
+      window.removeEventListener('scroll', handleScroll);
+      if (isNextPage === false) {
+        const moveToFirstPage = setTimeout(() => {
+          window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+          });
+        }, 4000);
+        setPageNumber(pageNumber);
+        return () =>
+          clearTimeout(
+            moveToFirstPage,
+          ); /* Added delay before moving to first page for visibility purpose */
+      }
+    }
+    return undefined;
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, true);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll, true);
+    };
+  });
+  useEffect(() => handlePageDisplay(), [pageNumber]);
+  useEffect(() => {
+    if (beerDetails && beerDetails.position && isNextPage !== true) {
+      // window.scroll for other browser
+      return (
+        window.scroll({
+          top: beerDetails.position.top,
+          left: beerDetails.position.left,
+          behavior: 'smooth',
+        }) ||
+        window.scrollTo(beerDetails.position.left, beerDetails.position.top)
+      );
+      // // window.scroll for Internet Explorer and Safari browsers
+    }
+    return undefined;
+  });
   return (
-    <section className="beer-list">
+    <section className="beer-list" id="beer-list">
       {beers.map((item) => (
         <Beer
           key={item.id}
@@ -47,17 +99,24 @@ BeersList.propTypes = {
     PropTypes.number,
     PropTypes.array,
     PropTypes.object,
-  ]).isRequired,
+  ]),
+  isNextPage: PropTypes.bool,
+  pageNumber: PropTypes.number,
 };
 
 BeersList.defaultProps = {
   beers: [],
+  pageNumber: 1,
+  isNextPage: undefined,
+  beerDetails: {},
 };
 
 function mapStateToProps(state) {
   return {
     beers: state.beers,
     beerDetails: state.beerDetails,
+    isNextPage: state.isNextPage,
+    pageNumber: state.pageNumber,
   };
 }
 export default connect(mapStateToProps)(BeersList);

@@ -8,7 +8,7 @@ import './detail.scss';
 function RightDetailSection({
   beerDetails: { firstBrewed, description, foodPairing },
 }) {
-  const foodPairingToString = foodPairing.join();
+  const foodPairingToString = (foodPairing || []).join();
   const history = useHistory();
   return (
     <div className="right-details-section">
@@ -20,13 +20,16 @@ function RightDetailSection({
       <p>{`${foodPairingToString.replace(/,/g, ', ')}.`}</p>
       <div
         style={{
-          width: '150px',
           textAlign: 'center',
         }}
       >
         <button
           type="button"
           className="main__button"
+          style={{
+            width: '200px',
+            padding: '8px',
+          }}
           onClick={(e) => {
             e.preventDefault();
             history.push('/');

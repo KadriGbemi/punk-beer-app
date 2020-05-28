@@ -26,8 +26,10 @@ function Beer({
         firstBrewed,
         description,
         position: {
-          top: window.scrollY,
-          left: window.scrollX,
+          top:
+            window.scrollY || window.pageYOffset /* Support older browsers */,
+          left:
+            window.scrollX || window.pageXOffset /* Support older browsers */,
         },
       }),
     );
