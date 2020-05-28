@@ -57,11 +57,14 @@ function Beer({
 
 Beer.propTypes = {
   name: PropTypes.string.isRequired,
-  imgUrl: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string,
   dispatch: PropTypes.func.isRequired,
   foodPairing: PropTypes.arrayOf(PropTypes.string).isRequired,
   firstBrewed: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
 };
 
+Beer.defaultProps = {
+  imgUrl: '',
+};
 export default connect(null)(Beer);

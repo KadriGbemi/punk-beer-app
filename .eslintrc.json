@@ -32,7 +32,6 @@
     "react-redux/prefer-separate-component-file": "off",
     "object-curly-newline": "off",
     "indent": "off",
-    "react-hooks/exhaustive-deps": "off",
     "operator-linebreak": 0,
     "implicit-arrow-linebreak": "off",
     "prettier/prettier": [
