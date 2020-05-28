@@ -19,8 +19,8 @@ You will also see any lint errors in the console.
 
 ### `npm run deploy`
 
-Deploys and builds the app to production on a separate branch known as the 'gh-pages'. Deployed
-changed will be pushed to this production URL: https://kadrigbemi.github.io/punk-beer-app/#/
+Deploys and build the app to production on a separate branch known as the 'gh-pages'. All deployed
+changes will be pushed to this production URL: https://kadrigbemi.github.io/punk-beer-app/#/
 
 ### Deployment
 
