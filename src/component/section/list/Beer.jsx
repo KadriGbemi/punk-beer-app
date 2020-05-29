@@ -2,7 +2,9 @@ import React, { useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory, Link } from 'react-router-dom';
+
 import { saveSelectedBeer } from '../../../redux/_actions';
+import { handleImageError } from '../helper';
 
 import './list.scss';
 
@@ -39,7 +41,7 @@ function Beer({
     <div className="beer-list__item" ref={beerItemRef}>
       <Link to="/detail">
         <img
-          src={imgUrl}
+          src={handleImageError(imgUrl)}
           alt="Beer"
           height="250"
           className="beer-list__item__img"

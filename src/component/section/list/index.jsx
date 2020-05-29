@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getBeers, setPage } from '../../../redux/_actions';
+import { handleScroll } from '../helper';
 import Beer from './Beer';
 
 import './list.scss';
@@ -23,36 +24,20 @@ function BeersList({ beers, beerDetails, isNextPage, dispatch, pageNumber }) {
       dispatch(getBeers(pageNumber));
     }
   }
-  function handleScroll() {
-    const windowHeight =
-      'innerHeight' in window
-        ? window.innerHeight
-        : document.documentElement
-            .offsetHeight; /* Support the use of older browsers */
-    const beerListElement = document.getElementById('beer-list');
-    const bottomPosition = beerListElement.getBoundingClientRect().bottom;
-    if (Math.round(bottomPosition) <= windowHeight + windowHeight / 2) {
-      dispatch(setPage(pageNumber + 1));
-      window.removeEventListener('scroll', handleScroll);
-      if (isNextPage === false) {
-        const moveToFirstPage = setTimeout(() => {
-          window.scroll(0, 0);
-        }, 2000);
-        setPageNumber(pageNumber);
-        return () =>
-          clearTimeout(
-            moveToFirstPage,
-          ); /* Added delay before moving to first page for visibility purpose */
-      }
-    }
-    return undefined;
+  function scrollFunc() {
+    return handleScroll(
+      dispatch,
+      setPage,
+      pageNumber,
+      isNextPage,
+      setPageNumber,
+    );
   }
-
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, true);
+    window.addEventListener('scroll', scrollFunc, true);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll, true);
+      window.removeEventListener('scroll', scrollFunc, true);
     };
   });
 /*eslint-disable */

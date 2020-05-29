@@ -1,12 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { handleImageError } from '../helper';
 
 function LeftDetailSection({ beerDetails }) {
   return (
     <div className="left-details-section">
       <div>
-        <img src={beerDetails.imgUrl} alt="Cinque Terre" height="250" />
+        <img
+          src={handleImageError(beerDetails.imgUrl)}
+          alt={beerDetails.name}
+          height="250"
+        />
         <p>{beerDetails.name}</p>
       </div>
     </div>
